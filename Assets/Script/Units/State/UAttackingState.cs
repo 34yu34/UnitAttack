@@ -25,6 +25,9 @@ public class UAttackingState : UnitState
 
     public override void Update()
     {
-    
+        if (_unit.InRange(_unit._target))
+        {
+
+        }
     }
 }

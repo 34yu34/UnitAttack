@@ -16,11 +16,6 @@ public class UMovingState : UnitState
         return "Moving";
     }
 
-    public override void Update()
-    {
-        
-    }
-
     public override UnitStateController.States NextState()
     {
         if (Vector3.Distance(_unit._target.transform.position, _unit.transform.position) <= _unit._stats.Range.Value)
@@ -28,5 +23,10 @@ public class UMovingState : UnitState
             return UnitStateController.States.Attacking;
         }
         return UnitStateController.States.None;
+    }
+
+    public override void Update()
+    {
+
     }
 }

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class SideUnitsController : MonoBehaviour
 {
-    public GameUnitsController _game_units;
+    public GameUnitsController _game_controller;
+    public GameUnitsController.Side _side;
     public List<Unit> _units;
     public List<Vector3> points;
     

@@ -166,7 +166,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6477996d4f9cc4d4f8cb42aa74b12151, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _game_units: {fileID: 0}
+  _game_controller: {fileID: 0}
+  _side: 0
   _units: []
   points: []
 --- !u!1 &482499493
@@ -179,6 +180,7 @@ GameObject:
   m_Component:
   - component: {fileID: 482499494}
   - component: {fileID: 482499495}
+  - component: {fileID: 482499496}
   m_Layer: 0
   m_Name: Topside
   m_TagString: Untagged
@@ -212,9 +214,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6477996d4f9cc4d4f8cb42aa74b12151, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _game_units: {fileID: 0}
+  _game_controller: {fileID: 0}
+  _side: 0
   _units: []
   points: []
+--- !u!114 &482499496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 482499493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0845be36fb195a943970c38339bb4ec5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _start: {x: 0, y: 0, z: -95}
+  _end: {x: 0, y: 0, z: 95}
+  _points:
+  - {x: 0, y: 0, z: 0}
 --- !u!1 &523093938
 GameObject:
   m_ObjectHideFlags: 0
