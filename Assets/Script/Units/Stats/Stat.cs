@@ -49,6 +49,37 @@ public class Stat
         TimeCheckkModif();
     }
 
+    public bool Equals(float a)
+    {
+        return a == Value;
+    }
+    public static bool operator ==(Stat s, float a)
+    {
+        return s.Value == a;
+    }
+    public static bool operator !=(Stat s, float a)
+    {
+        return s.Value != a;
+    }
+
+    public static bool operator >(Stat s, float a)
+    {
+        return s.Value > a;
+    }
+    public static bool operator <(Stat s, float a)
+    {
+        return s.Value < a;
+    }
+
+    public static bool operator >=(Stat s, float a)
+    {
+        return s.Value >= a;
+    }
+    public static bool operator <=(Stat s, float a)
+    {
+        return s.Value <= a;
+    }
+
     protected virtual void CheckMod()
     {
         if (_mod < 0.0f)

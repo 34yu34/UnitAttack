@@ -30,12 +30,6 @@ public class GameUnitsController : MonoBehaviour
         _bot._side = Side.Bot;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public SideUnitsController GetOtherSide(Side s)
     {
         if (s is Side.Bot)

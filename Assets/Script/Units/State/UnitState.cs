@@ -10,6 +10,7 @@ public abstract class UnitState
     public UnitState(Unit u)
     {
         _unit = u;
+        _unit._rb.velocity = Vector3.zero;
     }
 
     public abstract UnitStateController.States NextState();

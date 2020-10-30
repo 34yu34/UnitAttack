@@ -26,5 +26,21 @@ public class UnitStateController
     public void Update()
     {
         _state.Update();
+
+        SetNextState();
+    }
+
+    private void SetNextState()
+    {
+        States s = _state.NextState();
+
+        if (s is States.Moving)
+        {
+            _state = new UMovingState(_unit);
+        }
+        else if (s is States.Attacking)
+        {
+            _state = new UAttackingState(_unit);
+        }
     }
 }

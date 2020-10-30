@@ -4,13 +4,25 @@ using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour
 {
+    // dictates the speed at which cameras move
     public float _camera_speed;
+
+    // Cameras 
     private Camera _camera;
 
+    // Inputs
     private float _hori;
     private float _vert;
 
-    void Start()
+    // top references
+    private PlayerController _player_controller;
+    
+    private void Awake()
+    {
+        _player_controller = GetComponent<PlayerController>();
+    }
+
+    private void Start()
     {
         _camera = GetComponentInChildren<Camera>();
     }
@@ -45,7 +57,5 @@ public class PlayerCamera : MonoBehaviour
         cam_pos += obj_rot * new Vector3(0, 0, scroll);
 
         _camera.transform.position = cam_pos;
-        //Debug.ClearDeveloperConsole();
-        //Debug.Log(scroll);
     }
 }

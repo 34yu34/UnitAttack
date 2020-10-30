@@ -16,7 +16,7 @@ public class StatExpandable : Stat
         
     }
 
-    public void remove(float val)
+    public void Remove(float val)
     {
         _curr -= val;
 

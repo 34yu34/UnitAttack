@@ -13,43 +13,39 @@ public class PathEditor : Editor
     {
         Path p = target as Path;
 
-        if (p != null && p._points.Count > 0)
+        if (p != null && p._points.Count > 2)
         {
             List<Vector3> pts = new List<Vector3>();
-            pts.Add(p._start);
-            foreach (Vector3 pt in p._points) // dont do the last and first
+            pts.Add(p.Start);
+            Vector3 last_pt = p.Start;
+            for (int i = 1; i < p._points.Count - 1; ++i) // dont do the last and first
             {
-                pts.Add(pt);
-                pts.Add(pt);
+                DrawArrows(p._points[i], last_pt);
+                pts.Add(p._points[i]);
+                pts.Add(p._points[i]);
+                last_pt = p._points[i];
             }
-            pts.Add(p._end);
+            pts.Add(p.End);
+            DrawArrows(p.End, last_pt);
             Handles.DrawLines(pts.ToArray());
-        }
 
 
-        EditorGUI.BeginChangeCheck();
-        Vector3 newTargetPosition = Handles.PositionHandle(p._start, Quaternion.identity);
-        if (EditorGUI.EndChangeCheck())
-        {
-            Undo.RecordObject(p, "Change Look At Target Position");
-            p._start = newTargetPosition;
-        }
-        for (var i = 0; i < p._points.Count; ++i)
-        {
-            EditorGUI.BeginChangeCheck();
-            newTargetPosition = Handles.PositionHandle(p._points[i], Quaternion.identity);
-            if (EditorGUI.EndChangeCheck())
+            for (var i = 0; i < p._points.Count; ++i)
             {
-                Undo.RecordObject(p, "Change Look At Target Position");
-                p._points[i] = newTargetPosition;
+                EditorGUI.BeginChangeCheck();
+                Vector3 newTargetPosition = Handles.PositionHandle(p._points[i], Quaternion.identity);
+                if (EditorGUI.EndChangeCheck())
+                {
+                    Undo.RecordObject(p, "Change Look At Target Position");
+                    p._points[i] = newTargetPosition;
+                }
             }
         }
-        EditorGUI.BeginChangeCheck();
-        newTargetPosition = Handles.PositionHandle(p._end, Quaternion.identity);
-        if (EditorGUI.EndChangeCheck())
-        {
-            Undo.RecordObject(p, "Change Look At Target Position");
-            p._end = newTargetPosition;
-        }
+    }
+
+    public void  DrawArrows(Vector3 pt, Vector3 last_pt)
+    {
+        Vector3 pos = (pt + last_pt) / 2;
+        Handles.ArrowHandleCap(0, pos, Quaternion.LookRotation(pt - last_pt), HandleUtility.GetHandleSize(pos), EventType.Repaint);
     }
 }

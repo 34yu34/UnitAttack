@@ -11,13 +11,17 @@ public class UnitStatsController
     public Stat AttackSpeed;
 
     public Stat Range;
+    public Stat SpawnCooldown;
     public Stat MovementSpeed;
 
     public UnitStatsController()
     {
         Health = new StatExpandable();
+        
         Attack = new Stat();
         AttackSpeed = new Stat();
+
+        SpawnCooldown = new Stat();
         Range = new Stat();
         MovementSpeed = new Stat();
     }
@@ -31,16 +35,25 @@ public class UnitStatsController
     public void Update()
     {
         Health.Update();
+        
         Attack.Update();
         AttackSpeed.Update();
+
+        SpawnCooldown.Update();
         Range.Update();
+        MovementSpeed.Update();
+
     }
 
-    private void ResetStats()
+    public void ResetStats()
     {
         Health.ResetStat();
+        
         Attack.ResetStat();
         AttackSpeed.ResetStat();
+
+        SpawnCooldown.ResetStat();
         Range.ResetStat();
+        MovementSpeed.ResetStat();
     }
 }

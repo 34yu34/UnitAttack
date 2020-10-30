@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class UAttackingState : UnitState
 {
+
     public UAttackingState(Unit u) : base(u)
     {
-        
     }
 
     public override string Name()
@@ -16,7 +16,7 @@ public class UAttackingState : UnitState
 
     public override UnitStateController.States NextState()
     {
-        if (Vector3.Distance(_unit._target.transform.position, _unit.transform.position) >= _unit._stats.Range.Value)
+        if (_unit._targets.Count == 0)
         {
             return UnitStateController.States.Moving;
         }
@@ -25,9 +25,6 @@ public class UAttackingState : UnitState
 
     public override void Update()
     {
-        if (_unit.InRange(_unit._target))
-        {
-
-        }
+        _unit.LaunchAttack();
     }
 }
