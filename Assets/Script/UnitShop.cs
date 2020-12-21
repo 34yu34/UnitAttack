@@ -20,13 +20,12 @@ public class UnitShop : MonoBehaviour
         resize();
     }
 
-
-
     private void setup_dimension()
     {
         _dimension = new Vector2Int();
         _dimension.x = _player_controller._units.Length >= 6 ? 2 : 1;
         _dimension.y = _player_controller._units.Length / _dimension.x + _player_controller._units.Length % _dimension.x;
+        Debug.Log(_dimension);
     }
 
     private void resize()

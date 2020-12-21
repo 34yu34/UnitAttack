@@ -14,6 +14,8 @@ public class UnitStatsController
     public Stat SpawnCooldown;
     public Stat MovementSpeed;
 
+    public int Price;
+
     public UnitStatsController()
     {
         Health = new StatExpandable();
