@@ -10,16 +10,15 @@ public class UnitSpawner : MonoBehaviour
     private float _timer;
     private float _unit_height;
 
-    // Start is called before the first frame update
     void Start()
     {
         _timer = 0.0f;
-        _unit._stats.ResetStats(); // make sure de value are fine
+        _unit._stats.ResetStats(); // make sure de values are fine
 
         _unit_height = _unit.GetComponent<CapsuleCollider>().height;
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         _timer += Time.deltaTime;
@@ -37,5 +36,10 @@ public class UnitSpawner : MonoBehaviour
         u.gameObject.SetActive(true);
         _controller.AddUnit(ref u);
         _timer = 0;
+    }
+
+    public Vector3 position()
+    {
+        return transform.position;
     }
 }

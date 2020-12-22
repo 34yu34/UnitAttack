@@ -20,6 +20,11 @@ public class UnitShop : MonoBehaviour
         resize();
     }
 
+<<<<<<< HEAD
+=======
+
+    // make sure there is 2 rows if there is more than 6 units
+>>>>>>> add hero and spawner
     private void setup_dimension()
     {
         _dimension = new Vector2Int();
