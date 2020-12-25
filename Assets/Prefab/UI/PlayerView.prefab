@@ -247,7 +247,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _padding: 5
-  _basic_tile: {fileID: 5164522254123049997, guid: 519a7784bbc8222439433b083af15e57, type: 3}
+  _basic_tile: {fileID: 3480929632422973331, guid: 291b22b2d3a35454a8a0b66052a474a2, type: 3}
 --- !u!1 &7641501030033894961
 GameObject:
   m_ObjectHideFlags: 0
@@ -260,6 +260,7 @@ GameObject:
   - component: {fileID: 1007237186160482634}
   - component: {fileID: 6887852156872443778}
   - component: {fileID: 5551148770859697671}
+  - component: {fileID: 6408264866294802987}
   m_Layer: 5
   m_Name: PlayerUI
   m_TagString: Untagged
@@ -348,3 +349,16 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &6408264866294802987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7641501030033894961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a0c8b9e79c979a4f9af44bc47170939, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _camera: {fileID: 0}

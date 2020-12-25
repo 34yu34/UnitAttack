@@ -49,9 +49,15 @@ public class Stat
         TimeCheckkModif();
     }
 
-    public bool Equals(float a)
+    public override bool Equals(object a)
     {
-        return a == Value;
+        
+        return a.Equals(this.Value);
+    }
+
+    public override int GetHashCode()
+    {
+        return base.GetHashCode();
     }
     public static bool operator ==(Stat s, float a)
     {

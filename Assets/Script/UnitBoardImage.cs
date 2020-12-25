@@ -5,10 +5,11 @@ using UnityEngine;
 
 public class UnitBoardImage : MonoBehaviour
 {
-    private readonly string _empty_tile_path = "UnitBoardImages/Selector-Empty";
-    private readonly string _basic_unit_sprite_path = "UnitBoardImages/Basic_Unit";
-    private Sprite _empty_tile;
-    private Sprite _basic_unit_sprite;
+    private static readonly string _empty_tile_path = "UnitBoardImages/Selector-Empty";
+    private static readonly string _basic_unit_sprite_path = "UnitBoardImages/Basic_Unit";
+    private static Sprite _empty_tile;
+    private static Sprite _basic_unit_sprite;
+    private static bool _loaded = false;
 
     public int _size;
 
@@ -19,9 +20,10 @@ public class UnitBoardImage : MonoBehaviour
 
     void Awake()
     {
-        _empty_tile = Resources.Load<Sprite>(_empty_tile_path);
-        _basic_unit_sprite = Resources.Load<Sprite>(_basic_unit_sprite_path);
-        _image_selector = GetComponent<UnityEngine.UI.Image>();
+        LoadResources();
+        _image_selector = gameObject.AddComponent<UnityEngine.UI.Image>();
+
+
         _image_selector.sprite = _empty_tile;
         _unit = null;
         _loc = GetComponent<RectTransform>();
@@ -37,8 +39,13 @@ public class UnitBoardImage : MonoBehaviour
     {
         get { return _unit; }
         set 
-        { 
+        {
+            LoadResources();
             _unit = value;
+            if (_image_selector == null)
+            {
+                return;
+            }
             if (_unit != null)
             {
                 _image_selector.sprite = _unit._sprite != null ? _unit._sprite : _basic_unit_sprite;
@@ -52,7 +59,17 @@ public class UnitBoardImage : MonoBehaviour
 
     private void OnValidate()
     {
-        _empty_tile = Resources.Load<Sprite>(_empty_tile_path);
-        _basic_unit_sprite = Resources.Load<Sprite>(_basic_unit_sprite_path);
+        LoadResources();
+    
+    }
+
+    static void LoadResources()
+    {
+        if (!_loaded)
+        {
+            _empty_tile = Resources.Load<Sprite>(_empty_tile_path);
+            _basic_unit_sprite = Resources.Load<Sprite>(_basic_unit_sprite_path);
+            _loaded = true;
+        }
     }
 }
