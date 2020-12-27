@@ -153,8 +153,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0e9c07f7d86dc4c9da5e3fe75d5a22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _update_time: 5
-  _starting_money: 10
+  _update_time: 0.5
+  _starting_money: 5
   _money_step: 1
 --- !u!1 &1285525978370639355
 GameObject:
@@ -425,7 +425,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _padding: 5
   _basic_tile: {fileID: 3480929632422973331, guid: 291b22b2d3a35454a8a0b66052a474a2, type: 3}
-  _ui: {fileID: 0}
 --- !u!1 &7641501030033894961
 GameObject:
   m_ObjectHideFlags: 0
