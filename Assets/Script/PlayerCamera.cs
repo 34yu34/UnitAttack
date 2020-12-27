@@ -9,6 +9,7 @@ public class PlayerCamera : MonoBehaviour
 
     // Cameras 
     private Camera _camera;
+    public Camera Camera { get { return _camera; } }
 
     // Inputs
     private float _hori;

@@ -14,9 +14,13 @@ public class UnitShop : MonoBehaviour
 
     private PlayerController _player_controller;
 
+    private PlayerUI _ui;
+    public PlayerUI UI { get { return _ui; } }
+
     void Awake()
     {
         _player_controller = GetComponentInParent<PlayerController>();
+        _ui = GetComponentInParent<PlayerUI>();
         setup_dimension();
         resize();
     }

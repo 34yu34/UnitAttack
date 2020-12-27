@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     private PlayerCamera _camera;
     private UnitBoard _playing_board;
     private UnitShop _shop;
+    private MoneyGenerator _money_generator;
+    public MoneyGenerator MoneyGenerator { get { return _money_generator; } }
 
     // These are the buyable Unit for the player
     public Unit[] _units;
@@ -24,6 +26,7 @@ public class PlayerController : MonoBehaviour
         _camera = GetComponent<PlayerCamera>();
         _playing_board = GetComponentInChildren<UnitBoard>();
         _shop = GetComponentInChildren<UnitShop>();
+        _money_generator = GetComponent<MoneyGenerator>();
     }
 
     private void Update()
