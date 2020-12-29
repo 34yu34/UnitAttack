@@ -5,14 +5,16 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     // sub controller
-    private PlayerCamera _camera;
-    private UnitBoard _playing_board;
-    private UnitShop _shop;
+    private PlayerCamera _player_camera;
+    private PlayerUI _ui;
     private MoneyGenerator _money_generator;
     public MoneyGenerator MoneyGenerator { get { return _money_generator; } }
 
+
     // These are the buyable Unit for the player
-    public Unit[] _units;
+    [SerializeField]
+    private Hero _hero;
+    public Hero Hero { get { return _hero; } }
 
     // The actual board size
     public Vector2Int _board_dimension;
@@ -23,9 +25,8 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        _camera = GetComponent<PlayerCamera>();
-        _playing_board = GetComponentInChildren<UnitBoard>();
-        _shop = GetComponentInChildren<UnitShop>();
+        _player_camera = GetComponent<PlayerCamera>();
+        _ui = GetComponentInChildren<PlayerUI>();
         _money_generator = GetComponent<MoneyGenerator>();
     }
 

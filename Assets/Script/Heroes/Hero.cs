@@ -6,8 +6,10 @@ public class Hero : MonoBehaviour
 {
     [SerializeField]
     private List<Unit> _units;
+    public List<Unit> Units { get { return _units; } }
 
     private SpawnerBoard _spawner;
+    public SpawnerBoard Spawner { get { return _spawner; } }
 
 
     public void Awake()
@@ -23,6 +25,11 @@ public class Hero : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+        
+    }
+
+    public void OnValidate()
     {
         
     }

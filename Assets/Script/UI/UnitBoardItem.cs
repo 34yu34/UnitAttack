@@ -7,8 +7,10 @@ public class UnitBoardItem : MonoBehaviour
 { 
     private bool _is_inside;
     private Unit _unit;
+    private int _board_ref;
 
     private UnitBoard _board;
+    private RectTransform _rect_transform;
 
     public Unit Unit
     {
@@ -20,29 +22,40 @@ public class UnitBoardItem : MonoBehaviour
         }
     }
 
+    public void SetUnit(Unit u, int board_ref)
+    {
+        _board_ref = board_ref;
+        Unit = u;
+    }
+
     private UnitBoardImage _image;
+
+    public Vector2 Position
+    {
+        set { _rect_transform.anchoredPosition = value; }
+        get { return _rect_transform.anchoredPosition; }
+    }
 
     public void SetPosition(Vector2 v)
     {
         GetComponent<RectTransform>().anchoredPosition = v;
     }
 
-    public int Size
-    {
-        get { return _image._size; }
-    }
+    public int Size { get { return _image._size; } }
 
 
     public void Awake()
     {
         _board = GetComponentInParent<UnitBoard>();
         _image = GetComponentInChildren<UnitBoardImage>();
+        _rect_transform = GetComponent<RectTransform>();
     }
 
     public void OnValidate()
     {
         _board = GetComponentInParent<UnitBoard>();
         _image = GetComponentInChildren<UnitBoardImage>();
+        _rect_transform = GetComponent<RectTransform>();
     }
 
     public bool IsInside()

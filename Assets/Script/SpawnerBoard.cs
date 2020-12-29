@@ -4,23 +4,28 @@ using UnityEngine;
 
 public class SpawnerBoard : MonoBehaviour
 {
-    
+
     public Hero _hero;
     public Vector2 _size;
 
-    private List<UnitSpawner> _spawners;
+    private Dictionary<int, UnitSpawner> _spawners;
+
+    // unique int for each spawner created in the game
+    private int _item_counter;
+
 
     public void Awake()
     {
-        _spawners = new List<UnitSpawner>();
+        _spawners = new Dictionary<int, UnitSpawner>();
+        _item_counter = 1;
     }
 
     void Start()
     {
-        
+
     }
 
-    private int CreateSpawner(Unit unit, Vector2 position)
+    public int CreateSpawner(Unit unit, Vector2 position)
     {
         UnitSpawner unit_spawner = gameObject.AddComponent<UnitSpawner>();
         unit_spawner._unit = unit;
@@ -28,14 +33,21 @@ public class SpawnerBoard : MonoBehaviour
         position = this.transform.position + new Vector3(_size.x * (position.x - 0.5f), 0, _size.y * (position.y - 0.5f)) ;
         unit_spawner.transform.position = position;
         
-        _spawners.Add(unit_spawner);
+        _spawners[_item_counter] = unit_spawner;
 
-        return _spawners.Count - 1;
+        return _item_counter++;
     }
+
+    public void RemoveSpawner(int index)
+    {
+        _spawners.Remove(index);
+    }
+
+    
 
     void Update()
     {
-        
+
     }
 
     private void OnValidate()

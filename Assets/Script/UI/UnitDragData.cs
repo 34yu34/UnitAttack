@@ -48,7 +48,7 @@ public class UnitDragData : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
             {
                 if (_ui.PlayerController.MoneyGenerator.Pay(_unit._stats.Price) == MoneyGenerator.TransactionCode.Accepted)
                 {
-                    _ui.Board[i].Unit = _unit;
+                    _ui.Board.SetUnit(i, _unit);
                 }
             }
         }

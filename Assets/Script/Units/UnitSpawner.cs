@@ -28,7 +28,7 @@ public class UnitSpawner : MonoBehaviour
         }
     }
 
-    public void Spawn()
+    private void Spawn()
     {
         Vector3 spawn_pos = _controller._path.Start;
         spawn_pos.y += _unit_height / 2;

@@ -28,9 +28,8 @@ public class UnitShop : MonoBehaviour
     private void setup_dimension()
     {
         _dimension = new Vector2Int();
-        _dimension.x = _player_controller._units.Length >= 6 ? 2 : 1;
-        _dimension.y = _player_controller._units.Length / _dimension.x + _player_controller._units.Length % _dimension.x;
-        Debug.Log(_dimension);
+        _dimension.x = _player_controller.Hero.Units.Count >= 6 ? 2 : 1;
+        _dimension.y = _player_controller.Hero.Units.Count / _dimension.x + _player_controller.Hero.Units.Count % _dimension.x;
     }
 
     private void resize()
@@ -45,9 +44,10 @@ public class UnitShop : MonoBehaviour
             for (int j = 0; j < _dimension.y; j++)
             {
                 Vector2Int pos = new Vector2Int(start_x + 2 * i * side_size, start_y - 2 * j * side_size);
+                
                 ShopItem img = Instantiate(_basic_tile, this.transform);
                 img.SetPosition(pos);
-                img.Unit = _player_controller._units[i * (int)_player_controller._units.Length + j];
+                img.Unit = _player_controller.Hero.Units[i * (int)_dimension.y + j];
                 _images[i][j] = img;
             }
         }
