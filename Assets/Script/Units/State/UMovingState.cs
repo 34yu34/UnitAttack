@@ -26,6 +26,6 @@ public class UMovingState : UnitState
 
     public override void Update()
     {
-        _unit._rb.velocity = _unit._stats.MovementSpeed.Value * _unit._side_controller._path.Direction(0);
+        _unit._rb.velocity = _unit._stats.MovementSpeed.Value * _unit._path.Direction(0);
     }
 }

@@ -8,10 +8,6 @@ public class Hero : MonoBehaviour
     private List<Unit> _units;
     public List<Unit> Units { get { return _units; } }
 
-    private SpawnerBoard _spawner;
-    public SpawnerBoard Spawner { get { return _spawner; } }
-
-
     public void Awake()
     {
 

@@ -43,18 +43,8 @@ public class GameUnitsController : MonoBehaviour
         return null;
     }
 
-    public List<Unit> GetEnemyUnits(Unit u)
-    {
-        if (u._side_controller._side == Side.Top)
-        {
-            return _bot._units;
-        }
-        else if (u._side_controller._side == Side.Bot)
-        {
-            return _top._units;
-        }
-
-        return new List<Unit>();
-
-    }
+    //public List<Unit> GetEnemyUnits(Unit u)
+    //{
+    //    // todo
+    //}
 }

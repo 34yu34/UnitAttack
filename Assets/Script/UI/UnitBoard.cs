@@ -16,10 +16,6 @@ public class UnitBoard : MonoBehaviour
     //Top playerController
     private PlayerController _player_controller;
     public PlayerController PlayerController { get { return _player_controller; } }
-
-    // the spwaner Board reference
-    private SpawnerBoard _spawner;
-
     
     // Ui info
     private PlayerUI _ui;
@@ -39,7 +35,7 @@ public class UnitBoard : MonoBehaviour
 
     public void SetUnit(int index, Unit u)
     {
-        int board_ref = _spawner.CreateSpawner(u, GetPosition(index));
+        int board_ref = _player_controller.Spawner.CreateSpawner(u, GetPosition(index));
         _tiles[index].SetUnit(u, board_ref);
     }
 
@@ -107,11 +103,9 @@ public class UnitBoard : MonoBehaviour
         }
     }
 
-
     private void OnValidate()
     {
         _player_controller = GetComponentInParent<PlayerController>();
         _ui = GetComponentInParent<PlayerUI>();
-        _spawner = _player_controller.Hero.Spawner;
     }
 }

@@ -7,7 +7,10 @@ public class Unit : MonoBehaviour
 {
     public UnitStatsController _stats;
     public UnitStateController _states;
-    public SideUnitsController _side_controller;
+
+    public Path _path;
+    public GameSide.UnitSide _side;
+
     private SphereCollider _range_collider;
     public Projectile _projectile;
     public Sprite _sprite;
@@ -26,6 +29,13 @@ public class Unit : MonoBehaviour
         setup_range();
 
         _attack_timer = 1 / _stats.AttackSpeed.Value;
+    }
+
+    public void setup_side(SpawnerBoard spawner)
+    {
+        _side = spawner.Player.Side;
+        _path = spawner.Path;
+
     }
 
     private void setup_rigid_body()
@@ -128,7 +138,7 @@ public class Unit : MonoBehaviour
         Unit u = other.GetComponent<Unit>();
         if (!(u is null))
         {
-            if (!_targets.Contains(u) && u._side_controller._side != this._side_controller._side)
+            if (!_targets.Contains(u) && u._side != this._side)
             {
                 _targets.Add(u);
             }

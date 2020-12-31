@@ -13,7 +13,6 @@ public class SideUnitsController : MonoBehaviour
     void Start()
     {
         _units = new List<Unit>();
-        FindSubUnits();
         _path = GetComponentInChildren<Path>();
     }
 
@@ -23,21 +22,6 @@ public class SideUnitsController : MonoBehaviour
         
     }
 
-    private void FindSubUnits()
-    {
-        Unit[] units = GetComponentsInChildren<Unit>();
-        foreach (Unit u in units)
-        {
-            _units.Add(u);
-            u._side_controller = this;
-        }
-    }
-
-    public void AddUnit(ref Unit u)
-    {
-        _units.Add(u);
-        u._side_controller = this;
-    }
 
     public void Spawn()
     {
