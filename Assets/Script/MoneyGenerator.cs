@@ -20,10 +20,23 @@ public class MoneyGenerator : MonoBehaviour
     
     public int Money { get { return _money; } }
 
-    void Start()
+    public void SetGameMoney(int starting_money, int money_step_gain, float money_step_time)
+    {
+        _update_time = money_step_time;
+        _starting_money = starting_money;
+        _money_step = money_step_gain;
+        initialize_money();
+    }
+
+    private void initialize_money()
     {
         _money = _starting_money;
         _update_timer = 0;
+    }
+
+    void Start()
+    {
+        initialize_money();
     }
 
     // Update is called once per frame

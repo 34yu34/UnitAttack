@@ -11,9 +11,9 @@ public class UnitStatsController
     public Stat AttackSpeed;
 
     public Stat Range;
-    public Stat SpawnCooldown;
     public Stat MovementSpeed;
 
+    public int SpawnCooldown;
     public int Price;
 
     public UnitStatsController()
@@ -23,7 +23,6 @@ public class UnitStatsController
         Attack = new Stat();
         AttackSpeed = new Stat();
 
-        SpawnCooldown = new Stat();
         Range = new Stat();
         MovementSpeed = new Stat();
     }
@@ -41,7 +40,6 @@ public class UnitStatsController
         Attack.Update();
         AttackSpeed.Update();
 
-        SpawnCooldown.Update();
         Range.Update();
         MovementSpeed.Update();
 
@@ -54,7 +52,6 @@ public class UnitStatsController
         Attack.ResetStat();
         AttackSpeed.ResetStat();
 
-        SpawnCooldown.ResetStat();
         Range.ResetStat();
         MovementSpeed.ResetStat();
     }

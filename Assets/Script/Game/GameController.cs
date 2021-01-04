@@ -6,16 +6,26 @@ public class GameController : MonoBehaviour
 {
     [SerializeField]
     private WaveController _wave_controller;
+    public WaveController WaveController { get { return _wave_controller; } }
 
+    // Starting Money Settings
+    public int StartingMoney;
+    public int MoneyStepGain;
+    public float MoneyStepTime;
+
+    // Players
     public List<IPlayer> _players;
-    void Start()
-    {
-        
-    }
 
-    void Update()
+    // Boards settings
+    public Vector2Int BoardDimension;
+
+    public void Start()
     {
-        
+        _players = new List<IPlayer>(GetComponentsInChildren<IPlayer>());
+        foreach (IPlayer p in _players)
+        {
+            p.MoneyGenerator.SetGameMoney(StartingMoney, MoneyStepGain, MoneyStepTime);
+        }
     }
 
     private void OnValidate()

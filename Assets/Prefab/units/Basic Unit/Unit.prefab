@@ -137,12 +137,12 @@ MonoBehaviour:
       _base: 0.9
     Range:
       _base: 7
-    SpawnCooldown:
-      _base: 5
     MovementSpeed:
       _base: 12
+    SpawnCooldown: 2
     Price: 6
-  _side_controller: {fileID: 0}
+  _path: {fileID: 0}
+  _side: 0
   _projectile: {fileID: 2905616459199412927, guid: 2bcc22db31dfd1646bdc175825e9c75b, type: 3}
   _sprite: {fileID: 21300000, guid: 3b4482696511fe94992f186e1126483f, type: 3}
   _rb: {fileID: 0}

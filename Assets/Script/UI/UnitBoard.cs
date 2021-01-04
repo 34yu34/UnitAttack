@@ -44,16 +44,18 @@ public class UnitBoard : MonoBehaviour
         get { return _tiles.Count; }
     }
 
+    public Vector2Int Dimensions => _player_controller.GameController.BoardDimension;
+
     private void resize()
     {
         _board_zone = new Rect();
         int side_size = padding + _basic_tile.Size / 2;
-        int start_x = -side_size - (_player_controller._board_dimension.x / 2) * side_size - ((_player_controller._board_dimension.x % 2) * side_size);
-        int start_y = side_size + (_player_controller._board_dimension.y - 1) * (2 * side_size);
-        _tiles = new List<UnitBoardItem>(_player_controller._board_dimension.x * _player_controller._board_dimension.y);
-        for (int i = 0; i < _player_controller._board_dimension.x; ++i)
+        int start_x = -side_size - (Dimensions.x / 2) * side_size - ((Dimensions.x % 2) * side_size);
+        int start_y = side_size + (Dimensions.y - 1) * (2 * side_size);
+        _tiles = new List<UnitBoardItem>(Dimensions.x * Dimensions.y);
+        for (int i = 0; i < Dimensions.x; ++i)
         {
-            for (int j = 0; j < _player_controller._board_dimension.y; j++)
+            for (int j = 0; j < Dimensions.y; j++)
             {
                 Vector2Int pos = new Vector2Int(start_x + 2 * i * side_size, start_y - 2 * j * side_size);
 
