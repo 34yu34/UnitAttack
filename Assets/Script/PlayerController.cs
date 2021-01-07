@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour, IPlayer
     private SpawnerBoard _spawner;
     public SpawnerBoard Spawner { get { return _spawner; } }
 
+    [SerializeField]
     private GameSide.UnitSide _side;
     public GameSide.UnitSide Side { get { return _side; } }
 

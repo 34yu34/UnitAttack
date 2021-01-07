@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 802097c55bd5575428a97198c121df83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hero: {fileID: 0}
+  _hero: {fileID: 623314086047929202, guid: 8b5580897a632dc4a9c2c0fa2c3590fd, type: 3}
   _size: {x: 15, y: 10}
   _path: {fileID: 9142793034331127873}
 --- !u!114 &9142793034331127873

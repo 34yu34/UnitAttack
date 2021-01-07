@@ -93,9 +93,9 @@ public class Unit : MonoBehaviour
         return _stats.Attack.Value;
     }
 
-    public void LaunchAttack()
+    public virtual void LaunchAttack()
     {
-        if (_curr_target != null && _attack_timer >= (1 / _stats.AttackSpeed.Value))
+        if (CanAttack())
         {
             Projectile att = Instantiate(_projectile, transform.position, Quaternion.LookRotation(_curr_target.transform.position - transform.position));
             Rigidbody rb = att.gameObject.AddComponent<Rigidbody>();
@@ -105,26 +105,35 @@ public class Unit : MonoBehaviour
         }
     }
 
+    public bool CanAttack()
+    {
+        return _curr_target != null && _attack_timer >= (1 / _stats.AttackSpeed.Value);
+    }
+
     public bool InRange(Unit u)
     {
         return (u.transform.position - transform.position).sqrMagnitude <= _stats.Range.Value * _stats.Range.Value;
     }
 
-    public virtual void OnAttackHit(Unit target, float damage)
+    // when an auto attack actually hit the player this function will be call
+    public virtual void OnAttackHit(Unit target, AttackInfo att)
     {
 
     }
 
+    // kill the targeted unit 
     public virtual void Kill()
     {
         Destroy(gameObject);
     }
 
+    // return true if the unit is dead
     public virtual bool IsDead()
     {
         return _stats.Health.Value == 0.0f;
     }
     
+    // Check if the unit is alive and kill it if its not
     private void check_alive()
     {
         if (IsDead())
@@ -136,6 +145,20 @@ public class Unit : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Unit u = other.GetComponent<Unit>();
+        AddTarget(u);
+
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        Unit u = other.GetComponent<Unit>();
+        RemoveTarget(u);
+ 
+    }
+
+    // Add the unit to the target list if its in the good team
+    private void AddTarget(Unit u)
+    {
         if (!(u is null))
         {
             if (!_targets.Contains(u) && u._side != this._side)
@@ -145,9 +168,9 @@ public class Unit : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    // remove the units in the target list and stop attacking it
+    private void RemoveTarget(Unit u)
     {
-        Unit u = other.GetComponent<Unit>();
         if (!(u is null))
         {
             _targets.Remove(u);

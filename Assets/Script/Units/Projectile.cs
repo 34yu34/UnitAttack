@@ -6,19 +6,19 @@ public class Projectile : MonoBehaviour
 {
     public static float _hit_distance = 0.1f;
 
-    public delegate void OnHitDelegate(Unit target, float damage);
+    public delegate void OnHitDelegate(Unit target, AttackInfo att);
 
     public float _projectile_speed;
 
     private Vector3 _direction;
 
     private Unit _target;
-    private float _damage;
+    private AttackInfo _att;
     private OnHitDelegate _hit_delegate;
 
     public void Setup(Unit target, Unit attacker)
     {
-        _damage = attacker.CalcAttackDamage();
+        _att = AttackInfo.Calculate(attacker._stats.Attack);
         _hit_delegate = attacker.OnAttackHit;
         _target = target;
     }
@@ -49,8 +49,8 @@ public class Projectile : MonoBehaviour
     {
         if (_direction.sqrMagnitude <= _hit_distance*_hit_distance)
         {
-            _target.ReceiveDamage(_damage);
-            _hit_delegate.Invoke(_target, _damage);
+            _target.ReceiveDamage(_att.Damage);
+            _hit_delegate.Invoke(_target, _att);
             Destroy(gameObject);
         }
     }

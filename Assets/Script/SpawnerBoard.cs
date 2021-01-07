@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class SpawnerBoard : MonoBehaviour
 {
-
-    public Hero _hero;
     public Vector2 _size;
     [SerializeField]
     private Path _path;

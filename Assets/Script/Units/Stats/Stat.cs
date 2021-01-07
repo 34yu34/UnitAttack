@@ -51,7 +51,7 @@ public class Stat
 
     public override bool Equals(object a)
     {
-        
+
         return a.Equals(this.Value);
     }
 
@@ -84,6 +84,11 @@ public class Stat
     public static bool operator <=(Stat s, float a)
     {
         return s.Value <= a;
+    }
+
+    public static implicit operator float(Stat s)
+    {
+        return s.Value;
     }
 
     protected virtual void CheckMod()

@@ -6,5 +6,5 @@ public class Hero : MonoBehaviour
 {
     [SerializeField]
     private List<Unit> _units;
-    public List<Unit> Units { get { return _units; } }
+    public List<Unit> Units => _units;
 }
